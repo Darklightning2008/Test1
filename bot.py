@@ -1,11 +1,18 @@
 from pyrogram import Client, filters
 from pyrogram.types import InputMediaPhoto
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Replace "YOUR_API_ID" and "YOUR_API_HASH" with your own values
 api_id = "22839370"
 api_hash = "7fb99db07ddecec3e7a1f02da9730c33"
 
-app = Client("6799162039:AAFt_KeEtS6w3WNUOCnvyjYU9elUDKsHTgY", api_id=api_id, api_hash=api_hash)
+bot_token = os.getenv("BOT_TOKEN")
+
+app = Client(bot_token, api_id=api_id, api_hash=api_hash)
 
 @app.on_message(filters.command("start"))
 def start(client, message):
